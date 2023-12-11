@@ -42,42 +42,44 @@ require_once("header.php");
 
         ?>
         <div class="col-md-6">
-          <form action="code/add_examination_exe.php" method="post">
-            <div class="form-group">
-              <label for="">Exam Title</label>
-              <input type="text" name="title" id="title" class="form-control">
-            </div>
+        <form action="code/add_examination_exe.php" method="post">
+    <div class="form-group">
+        <label for="title">Exam Title</label>
+        <input type="text" name="title" id="title" class="form-control" required>
+    </div>
 
-            <div class="form-group">
-              <label for="">Program</label><br>
-              <select class="form-control" name="pid" id="pid">
-                <option value="">Select a program</option>
-                <?php foreach ($data1 as $row) { ?>
-                  <option value="<?php echo $row["p_id"]; ?>">
+    <div class="form-group">
+        <label for="pid">Program</label><br>
+        <select class="form-control" name="pid" id="pid" required>
+            <option value="">Select a program</option>
+            <?php foreach ($data1 as $row) { ?>
+                <option value="<?php echo $row["p_id"]; ?>">
                     <?php echo $row["p_name"]; ?>
-                  </option>
-                <?php } ?>
-              </select>
-            </div>
+                </option>
+            <?php } ?>
+        </select>
+    </div>
 
-            <div class="form-group">
-              <label for="">Year & Month</label>
-              <input type="text" name="year" class="form-control">
-            </div>
+    <div class="form-group">
+        <label for="year">Year & Month</label>
+        <input type="text" name="year" class="form-control" required>
+    </div>
 
-            <div class="form-group">
-              <label for="semester">Semester:</label>
-              <select name="sem" id="semester" class="form-control">
-                <option value="1">Semester 1</option>
-                <option value="2">Semester 2</option>
-                <option value="3">Semester 3</option>
-                <option value="4">Semester 4</option>
-                <option value="5">Semester 5</option>
-                <option value="6">Semester 6</option>
-              </select>
-            </div>
-            <button type="submit" name="sub" class="btn btn-primary">ADD</button>
-          </form>
+    <div class="form-group">
+        <label for="semester">Semester:</label>
+        <select name="sem" id="semester" class="form-control" required>
+            <option value="1">Semester 1</option>
+            <option value="2">Semester 2</option>
+            <option value="3">Semester 3</option>
+            <option value="4">Semester 4</option>
+            <option value="5">Semester 5</option>
+            <option value="6">Semester 6</option>
+        </select>
+    </div>
+    
+    <button type="submit" name="sub" class="btn btn-primary">ADD</button>
+</form>
+
         </div>
 
 

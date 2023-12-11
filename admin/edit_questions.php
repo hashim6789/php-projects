@@ -130,72 +130,36 @@ require_once("../admin/header.php");
 
 
 
-              <div>
-                <form action="code/update_questions_exe.php" method="post">
-
-                  <!-- <div class="form-group">
-      <label for="sid">Course</label>
-      <select class="form-control" name="cid" id="cid">
-        <option value="">Select course</option>
-        <?php foreach ($data1 as $row) { ?>
-          <option value="<?php echo $row["p_id"]; ?>">
-            <?php echo $row['p_name'] ?>
+            <div>
+  <form action="code/update_questions_exe.php" method="post">
+    <div class="form-group">
+      <label for="">Question Pattern</label>
+      <select class="form-control" name="patid" id="" required>
+        <option value="">
+          <?php echo "PART " . $data7['part'] . " " . $data7['mark'] . "- MARKS" . "(" . $data7['m_order'] . ")" ?>
+        </option>
+        <?php foreach ($data3 as $row) { ?>
+          <option value="<?php echo $row["mpat_id"] ?>" required>
+            <?php echo "PART " . $row['part'] . " " . $row['mark'] . "- MARKS" . "(" . $row['m_order'] . ")" ?>
           </option>
         <?php } ?>
       </select>
     </div>
 
     <div class="form-group">
-      <label for="sid">Subject</label>
-      <select class="form-control" name="sid" id="sid">
-        <option value="">Select pattern</option>
-        <?php foreach ($data2 as $row) { ?>
-          <option value="<?php echo $row["c_id"]; ?>">
-            <?php echo $row['c_name'] ?>
-          </option>
-        <?php } ?>
-      </select>
-    </div> -->
+      <label for="qn">Questions</label>
+      <input type="text" class="form-control" name="qn" id="qn" value="<?php echo $data7['qn'] ?>" required>
+    </div>
 
-                  <div class="form-group">
-                    <label for="">Question Pattern</label>
-                    <select class="form-control" name="patid" id="">
-                      <option value="">
-                        <?php echo "PART " . $data7['part'] . " " . $data7['mark'] . "- MARKS" . "(" . $data7['m_order'] . ")" ?>
-                      </option>
-                      <?php foreach ($data3 as $row) { ?>
-                        <option value="<?php echo $row["mpat_id"] ?>">
-                          <?php echo "PART " . $row['part'] . " " . $row['mark'] . "- MARKS" . "(" . $row['m_order'] . ")" ?>
-                        </option>
-                      <?php } ?>
-                    </select>
-                  </div>
+    <input type="hidden" name="cid" value="<?php echo $cid ?>">
+    <input type="hidden" name="cmid" value="<?php echo $cmid ?>">
+    <input type="hidden" name="qnid" value="<?php echo $qnid ?>">
+    <input type="hidden" name="patid" value="<?php echo $data7['mpat_id'] ?>">
 
-                  <!-- <div class="form-group">
-      <label for="sid">Modules</label>
-      <select class="form-control" name="mid" id="mid">
-        <option value="">Select pattern</option>
-        <?php foreach ($data4 as $row) { ?>
-          <option value="<?php echo $row["mod_id"]; ?>">
-            <?php echo $row['mod_name'] ?>
-          </option>
-        <?php } ?>
-      </select>
-    </div> -->
+    <button type="submit" class="btn btn-primary" name="sub">UPDATE</button>
+  </form>
+</div>
 
-                  <div class="form-group">
-                    <label for="qn">Questions</label>
-                    <input type="text" class="form-control" name="qn" id="qn" value="<?php echo $data7['qn'] ?>">
-                  </div>
-                  <input type="hidden" name="cid" value="<?php echo $cid ?>">
-                  <input type="hidden" name="cmid" value="<?php echo $cmid ?>">
-                  <input type="hidden" name="qnid" value="<?php echo $qnid ?>">
-                  <input type="hidden" name="patid" value="<?php echo $data7['mpat_id'] ?>">
-
-
-                  <button type="submit" class="btn btn-primary" name="sub">UPDATE</button>
-                </form>
-              </div>
 
 
 

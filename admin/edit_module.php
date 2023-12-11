@@ -45,34 +45,34 @@ require_once("../admin/header.php");
         
         ?>
 
-        <div class="col-md-6">
-          <form action="code/update_module_exe.php" method="post">
-            <div class="form-group">
-              <label for="cid">Subject</label>
-              <select class="form-control" name="cid" id="cid">
+<div class="col-md-6">
+    <form action="code/update_module_exe.php" method="post">
+        <div class="form-group">
+            <label for="cid">Subject</label>
+            <select class="form-control" name="cid" id="cid" required>
                 <option value="<?php echo $data1['c_id'] ?>">
-                  <?php echo $data1['c_name'] ?>
+                    <?php echo $data1['c_name'] ?>
                 </option>
                 <?php foreach ($data as $row) { ?>
-                  <option value="<?php echo $row['c_id'] ?>">
-                    <?php echo $row['c_name'] ?>
-                  </option>
+                    <option value="<?php echo $row['c_id'] ?>">
+                        <?php echo $row['c_name'] ?>
+                    </option>
                 <?php } ?>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="mname">Module Name</label>
-              <input type="text" class="form-control" name="mname" id="mname" value="<?php echo $data1['mod_name'] ?>">
-            </div>
-            <div class="form-group">
-              <label for="mno">Module No</label>
-              <input type="number" class="form-control" name="mno" id="mno" min="1" max="5"
-                value="<?php echo $data1['mod_no'] ?>">
-            </div>
-            <button type="submit" name="sub" class="btn btn-primary">UPDATE</button>
-            <input type="hidden" name="cmid" value="<?php echo $cmid ?>">
-          </form>
+            </select>
         </div>
+        <div class="form-group">
+            <label for="mname">Module Name</label>
+            <input type="text" class="form-control" name="mname" id="mname" value="<?php echo $data1['mod_name'] ?>" required>
+        </div>
+        <div class="form-group">
+            <label for="mno">Module No</label>
+            <input type="number" class="form-control" name="mno" id="mno" min="1" max="5" value="<?php echo $data1['mod_no'] ?>" required>
+        </div>
+        <button type="submit" name="sub" class="btn btn-primary">UPDATE</button>
+        <input type="hidden" name="cmid" value="<?php echo $cmid ?>">
+    </form>
+</div>
+
 
 
 

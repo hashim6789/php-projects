@@ -44,46 +44,48 @@ require_once("header.php");
 
         ?>
         <div class="col-md-6">
-          <form action="code/update_examination_exe.php" method="post">
-            <div class="form-group">
-              <label for="">Exam Title</label>
-              <input type="text" name="title" id="title" class="form-control" value="<?php echo $data1["ex_title"]; ?>">
-            </div>
+    <form action="code/update_examination_exe.php" method="post">
+        <div class="form-group">
+            <label for="title">Exam Title</label>
+            <input type="text" name="title" id="title" class="form-control" value="<?php echo $data1["ex_title"]; ?>" required>
+        </div>
 
-            <div class="form-group">
-              <label for="">Program</label><br>
-              <select class="form-control" name="pid" id="pid">
+        <div class="form-group">
+            <label for="pid">Program</label><br>
+            <select class="form-control" name="pid" id="pid" required>
                 <option value="<?php echo $data1["p_id"]; ?>">
-                  <?php echo $data1["p_name"]; ?>
+                    <?php echo $data1["p_name"]; ?>
                 </option>
                 <?php foreach ($data2 as $row) { ?>
-                  <option value="<?php echo $row["p_id"]; ?>">
-                    <?php echo $row["p_name"]; ?>
-                  </option>
+                    <option value="<?php echo $row["p_id"]; ?>">
+                        <?php echo $row["p_name"]; ?>
+                    </option>
                 <?php } ?>
-              </select>
-            </div>
+            </select>
+        </div>
 
-            <div class="form-group">
-              <label for="">Year & Month</label>
-              <input type="text" name="year" class="form-control" value="<?php echo $data1["ex_year"]; ?>">
-            </div>
+        <div class="form-group">
+            <label for="year">Year & Month</label>
+            <input type="text" name="year" class="form-control" value="<?php echo $data1["ex_year"]; ?>" required>
+        </div>
 
-            <div class="form-group">
-              <label for="sem">Semester:</label>
-              <select name="sem" id="sem" class="form-control">
+        <div class="form-group">
+            <label for="sem">Semester:</label>
+            <select name="sem" id="sem" class="form-control" required>
                 <option value="1">Semester 1</option>
                 <option value="2">Semester 2</option>
                 <option value="3">Semester 3</option>
                 <option value="4">Semester 4</option>
                 <option value="5">Semester 5</option>
                 <option value="6">Semester 6</option>
-              </select>
-            </div>
-            <input type="hidden" name="exid" value="<?php echo $exid ?>">
-            <button type="submit" name="sub" class="btn btn-primary">UPDATE</button>
-          </form>
+            </select>
         </div>
+
+        <input type="hidden" name="exid" value="<?php echo $exid ?>">
+        <button type="submit" name="sub" class="btn btn-primary">UPDATE</button>
+    </form>
+</div>
+
 
 
       </div>

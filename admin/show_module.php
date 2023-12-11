@@ -1,5 +1,11 @@
 <?php
 require_once("../admin/header.php");
+require_once("../connectionclass.php");
+
+$obj = new Connectionclass();
+$username= $_SESSION['username'];
+$sql="select st_id from staff where st_email='$username'";
+  $staff_id= $obj->getSingleData($sql);
 ?>
 
 <!-- Content Wrapper. Contains page content -->
@@ -23,6 +29,7 @@ require_once("../admin/header.php");
     <div class="card">
       <div class="card-header">
         <h3 class="card-title">Modules</h3>
+        <a class="btn btn-sm btn-primary float-right" href="add_module.php">ADD</a>
 
 
       </div>
@@ -31,7 +38,7 @@ require_once("../admin/header.php");
         require_once("../connectionclass.php");
         $query = "SELECT * FROM course_module cm 
                    JOIN course c on (cm.fk_cid = c.c_id)
-                   JOIN programme p on (p.p_id = c.fk_pid)";
+                   JOIN programme p on (p.p_id = c.fk_pid) where c_id in(select fk_cid from staff_course where fk_stid=$staff_id) order by c_id asc";
         //echo $query;
         
         $obj = new Connectionclass();

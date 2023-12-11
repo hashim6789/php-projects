@@ -1,6 +1,11 @@
 <?php
 require_once("header.php");
+require_once("../connectionclass.php");
 
+$obj = new Connectionclass();
+$username= $_SESSION['username'];
+$sql="select st_id from staff where st_email='$username'";
+  $staff_id= $obj->getSingleData($sql);
 
  
 ?>
@@ -32,7 +37,7 @@ require_once("header.php");
         if (is_array($data)) {
           $pid = $data["fk_pid"];
           $sem = $data["semester"];
-          $query = "SELECT * FROM exam_course ec JOIN course c ON (ec.fk_cid=c.c_id) WHERE fk_exid = $exid";
+          $query = "SELECT * FROM exam_course ec JOIN course c ON (ec.fk_cid=c.c_id) WHERE fk_exid = $exid and   c_id in(select fk_cid from staff_course where fk_stid=$staff_id) ";
           //echo $query;
         
           $data1 = $obj->GetTable($query);
@@ -62,6 +67,7 @@ require_once("header.php");
                   <th> ID </th>
                   <th>SUBJECT NAME </th>
                   <th>SUBJECT CODE </th>
+                  <th>STATUS</th>
                   <th>ACTION</th>
 
                 </tr>
@@ -87,11 +93,29 @@ require_once("header.php");
                       <?php echo $row["c_code"]; ?>
                     </td>
                    
-                    
                     <td>
-                    <a href="code/generate_exam_course_exe.php?excid=<?php echo $row['ex_cid'] ?>"
+                      <?php echo $row["exc_status"]; ?>
+                    </td>
+                   
+                    <td>
+                      <?php
+if($row["exc_status"]=="GENERATED"){
+?>
+<a href="code/generate_exam_course_exe.php?excid=<?php echo $row['ex_cid'] ?>"
+                  class="btn btn-sm btn-success">RE-GENERATE</a>
+                  <a href="show_generated_question_paper.php?excid=<?php echo $row['ex_cid'] ?>"
+                  class="btn btn-sm btn-danger">PRINT</a>
+<?php
+}else{
+  ?>
+<a href="code/generate_exam_course_exe.php?excid=<?php echo $row['ex_cid'] ?>"
                   class="btn btn-sm btn-success">GENERATE</a>
-                  <a href="show_exam_sub_pat_setting.php?pid=<?php echo $pid ?>&cid=<?php echo $cid ?>"
+  <?php
+}
+
+?>
+                    
+                  <a href="show_exam_sub_pat_setting.php?exam_id=<?php echo $exid ?>&pid=<?php echo $pid ?>&cid=<?php echo $cid ?>"
                   class="btn btn-sm btn-success">MARK PATTERNS</a>
                   
               </td>

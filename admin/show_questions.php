@@ -10,8 +10,10 @@ require_once("../admin/header.php");
   <section class="content-header">
     <div class="container-fluid">
       <div class="row mb-2">
-        <div class="col-sm-6">
+        <div class="col-sm-12">
           <h1>Available Questions</h1>
+          <a class="btn btn-sm btn-success float-right p-2" href='show_module.php'>BACK</a>
+
         </div>
         <?php
         require_once("../connectionclass.php");
@@ -98,9 +100,9 @@ require_once("../admin/header.php");
                     <td>
                       <?php echo $row["part"]; ?>
                     </td>
-                    <td><a onclick="return confirm('are you sure want to delete?')" class="btn btn-sm btn-danger"
+                    <td><a onclick="return confirm('are you sure want to delete?')" class="btn btn-xs btn-danger"
                         href="code/delete_questions_exe.php?qnid=<?php echo $row['qn_id'] ?>&cid=<?php echo $cid ?>&cmid=<?php echo $cmid ?>">Delete</a>
-                      <a class="btn btn-sm btn-primary"
+                      <a class="btn btn-xs btn-primary"
                         href="edit_questions.php?qnid=<?php echo $row['qn_id'] ?>&cmid=<?php echo $cmid ?>&cid=<?php echo $cid ?>">Edit</a>
                     </td>
                   </tr>

@@ -40,52 +40,58 @@ require_once("header.php");
         ?>
 
         <div class="col-md-6">
-          <form action="./code/add_staff_exe.php" method="post">
-            <div class="form-group">
-              <label for="pid">Programmes :</label>
-              <select class="form-control" id="pid" name="pid">
-                <option value="">Select any programme</option>
-                <?php foreach ($data as $row) { ?>
-                  <option value="<?php echo $row["p_id"]; ?>">
+        <form action="./code/add_staff_exe.php" method="post">
+    <div class="form-group">
+        <label for="pid">Programmes :</label>
+        <select class="form-control" id="pid" name="pid" required>
+            <option value="">Select any programme</option>
+            <?php foreach ($data as $row) { ?>
+                <option value="<?php echo $row["p_id"]; ?>">
                     <?php echo $row["p_name"]; ?>
-                  </option>
-                <?php } ?>
-              </select>
-            </div>
+                </option>
+            <?php } ?>
+        </select>
+    </div>
+    <div class="form-group">
+    <label for="stname">Staff Name:</label>
+    <input type="text" class="form-control" id="stname" name="stname" pattern="[A-Za-z ]+" title="Only alphabetical characters are allowed" required>
+</div>
+
+    <div class="form-group">
+        <label for="stphone">Staff Mobile No :</label>
+        <input type="tel" id="mobile" name="stphone" class="form-control" pattern="[6789][0-9]{9}" maxlength="10" required>
+    </div>
+
+    <div class="form-group">
+        <div class="form-group">
             <div class="form-group">
-              <label for="stname">Staff Name :</label>
-              <input type="text" class="form-control" id="stname" name="stname">
-            </div>
-            <div class="form-group">
-              <label for="stphone">Staff Phone :</label>
-              <input type="text" class="form-control" id="stphone" name="stphone">
-            </div>
-            <div class="form-group">
-              <label for="stmail">Staff Email :</label>
-              <input type="email" class="form-control" id="stmail" name="stmail">
-            </div>
-            <div class="form-group">
-              <div class="form-group">
-                <div class="form-group">
-                  <label>Gender:</label>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="stgender" id="male" value="Male">
+                <label>Gender:</label>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="stgender" id="male" value="Male" required>
                     <label class="form-check-label" for="male">Male</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="stgender" id="female" value="Female">
-                    <label class="form-check-label" for="female">Female</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="stgender" id="others" value="Others">
-                    <label class="form-check-label" for="others">Others</label>
-                  </div>
                 </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="stgender" id="female" value="Female" required>
+                    <label class="form-check-label" for="female">Female</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="stgender" id="others" value="Others" required>
+                    <label class="form-check-label" for="others">Others</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="stmail">Staff Email :</label>
+                <input type="email" class="form-control" id="stmail" name="stmail" required>
+            </div>
+            <div class="form-group">
+                <label for="stmail">Staff Password</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary" name="submit">ADD</button>
+</form>
 
-
-              </div>
-              <button type="submit" class="btn btn-primary" name="submit">ADD</button>
-          </form>
         </div>
 
 

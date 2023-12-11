@@ -14,7 +14,7 @@ if ($exe != null) {
 
 	if ($exe['usertype'] == 'ADMIN') {
 
-		header("location:admin/show_examination.php");
+		header("location:admin/dashboard.php");
 	} elseif ($exe['usertype'] == 'STAFF') {
 		header("location:admin/show_exams.php");
 	}

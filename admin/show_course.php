@@ -23,6 +23,7 @@ require_once("header.php");
     <div class="card">
       <div class="card-header">
         <h3 class="card-title">Courses</h3>
+        <a class="btn btn-sm btn-primary float-right" href="add_course.php">ADD</a>
 
 
       </div>
@@ -32,17 +33,48 @@ require_once("header.php");
 
 
         require_once("../connectionclass.php");
-        $query = "SELECT * FROM course c JOIN programme p ON (c.fk_pid = p.p_id)";
+        $pid="";
+
+        $query = "SELECT * FROM course c JOIN programme p ON (c.fk_pid = p.p_id) order by p.p_id,sem_no";
+        if(isset($_GET['pid'])){
+          $pid=$_GET['pid'];
+           $query = "SELECT * FROM course c JOIN programme p ON (c.fk_pid = p.p_id) where p.p_id=$pid order by sem_no";
+        }
 
         $obj = new Connectionclass();
         $data = $obj->GetTable($query);
+        $sql = "SELECT * FROM programme"; 
+        $courses = $obj->GetTable($sql);
         // var_dump($data);
         
         ?>
+  <form action="show_course.php" method="get" class="form-inline">
+            <div class="form-group">
+              <label for="pid">Programme:</label>
+              <select name="pid" id="pid" class="form-control" required>
+                <option value="">Select any programme</option>
+                <?php foreach ($courses as $row) {
+                  $selected="";
+                  if($pid==$row['p_id']){
+                    $selected="selected";
+                  }else{
+                    $selected="";
+                  }
+                  
+                  ?>
+                  <option <?php echo $selected  ?> value="<?php echo $row["p_id"]; ?>">
+                    <?php echo $row["p_name"]; ?>
+                  </option>
+                <?php } ?>
+              </select>
+            </div>
+ 
 
+              <button type="submit" class="btn btn-primary">Search</button>
+          </form>
         <table class="table table-bordered">
           <tr>
-            <th> ID </th>
+            <th> SL NO</th>
             <th>SUBJECT NAME </th>
             <th>SUBJECT CODE </th>
             <th>SEMESTER </th>
@@ -50,12 +82,13 @@ require_once("header.php");
             <th>ACTION</th>
           </tr>
           <?php
-          foreach ($data as $row) {
+          if(count($data)>0){
+          foreach ($data as $index=>$row) {
             ?>
 
             <tr>
               <td>
-                <?php echo $row["c_id"]; ?>
+                <?php echo $index+1; ?>
               </td>
               <td>
                 <?php echo $row["c_name"]; ?>
@@ -72,11 +105,21 @@ require_once("header.php");
               <td><a onclick="return confirm('are you sure want to delete?')" class="btn btn-sm btn-danger"
                   href="code/delete_course_exe.php?cid=<?php echo $row['c_id'] ?>">Delete</a>
                 <a class="btn btn-sm btn-primary" href="edit_course.php?cid=<?php echo $row['c_id'] ?>">Edit</a>
-                <a class="btn btn-sm btn-success"
-                  href="add_exam_sub_pat_setting.php?cid=<?php echo $row['c_id'] ?>&pid=<?php echo $row['p_id'] ?>">settings</a>
+             <!--   <a class="btn btn-sm btn-success"
+                  href="add_exam_sub_pat_setting.php?cid=<?php echo $row['c_id'] ?>&pid=<?php echo $row['p_id'] ?>">settings</a>-->
               </td>
             </tr>
-          <?php } ?>
+          <?php }
+          }else{
+            ?>
+<tr>
+  <th colspan="6">NO DATA FOUND</th>
+</tr>
+            <?php
+          }
+          
+          
+          ?>
         </table>
 
 

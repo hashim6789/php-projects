@@ -23,6 +23,7 @@ require_once("header.php");
     <div class="card">
       <div class="card-header">
         <h3 class="card-title"> Programmes</h3>
+        <a class="btn btn-sm btn-primary float-right" href="add_programme.php">ADD</a>
 
 
       </div>
@@ -41,18 +42,18 @@ require_once("header.php");
 
         <table class="table table-bordered">
           <tr>
-            <th> ID </th>
-            <th> Programme</th>
+            <th> SL NO </th>
+            <th> PROGRAMME</th>
             <th>ACTION</th>
 
           </tr>
           <?php
-          foreach ($data as $row) {
+          foreach ($data as $index=>$row) {
             ?>
 
             <tr>
               <td>
-                <?php echo $row["p_id"]; ?>
+                <?php echo $index+1; ?>
               </td>
               <td>
                 <?php echo $row["p_name"]; ?>

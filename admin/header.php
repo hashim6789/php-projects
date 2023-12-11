@@ -31,7 +31,12 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="dashboard.php" class="nav-link">Home</a>
+        <a  href=
+        <?php if($usertype == "ADMIN") {
+          echo "dashboard.php";
+         }else{
+          echo "dashboard_staff.php";
+         }?> class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="../check_logout.php" class="nav-link">Logout</a>
@@ -67,7 +72,8 @@
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
+          with font-awesome or any other icon font library -->
+          <?php if($usertype == "ADMIN") { ?>
           <li class="nav-item">
             <a href="dashboard.php" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -79,7 +85,6 @@
            
           </li>
           
-          <?php if($usertype == "ADMIN") { ?>
           <!--programme-->
           <li class="nav-item">
             <a href="#" class="nav-link">
@@ -208,6 +213,17 @@
             </ul>
           </li>
           <?php }elseif($usertype == "STAFF") { ?>
+
+            <li class="nav-item">
+            <a href="dashboard_staff.php" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Dashboard
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+           
+          </li>
             
 
             <!--declared exams-->

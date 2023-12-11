@@ -1,5 +1,12 @@
 <?php
 require_once("../admin/header.php");
+require_once("../connectionclass.php");
+
+$obj = new Connectionclass();
+$username= $_SESSION['username'];
+$sql="select st_id from staff where st_email='$username'";
+  $staff_id= $obj->getSingleData($sql);
+ 
 ?>
 
 <!-- Content Wrapper. Contains page content -->
@@ -30,58 +37,61 @@ require_once("../admin/header.php");
 
 
         <?php
-        require_once("../connectionclass.php");
+        
 
-        $obj = new Connectionclass();
-
-        $query = "SELECT * FROM course";
+        $query = "SELECT * FROM course where c_id in(select fk_cid from staff_course where fk_stid=$staff_id)";
         $data1 = $obj->GetTable($query);
         //var_dump($data1);
         
 
         ?>
         <div class="col-md-6">
-          <form action="code/add_mark_pattern_exe.php" method="post">
-            <div class="form-group">
-              <label for="">Course</label><br>
-              <select class="form-control" name="cid" id="cid">
-                <option value="">Select a Course</option>
-                <?php foreach ($data1 as $row) { ?>
-                  <option value="<?php echo $row["c_id"]; ?>">
+        <form action="code/add_mark_pattern_exe.php" method="post">
+    <div class="form-group">
+        <label for="cid">Course</label><br>
+        <select class="form-control" name="cid" id="cid" required>
+            <option value="">Select a Course</option>
+            <?php foreach ($data1 as $row) { ?>
+                <option value="<?php echo $row["c_id"]; ?>">
                     <?php echo $row["c_name"]; ?>
-                  </option>
-                <?php } ?>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="">Pattern Title</label>
-              <select name="part" id="" class="form-control">
-                <option value="">Select any title</option>
-                <option value="A">PART A</option>
-                <option value="B">PART B</option>
-                <option value="C">PART C</option>
-                <option value="D">PART D</option>
-                <option value="E">PART E</option>
-                <option value="F">PART F</option>
-                <option value="G">PART G</option>
-                <option value="H">PART H</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="">Mark</label>
-              <select name="mark" id="" class="form-control">
-                <option value="">Select mark</option>
-                <option value="2"> 2 - MARK </option>
-                <option value="5"> 5 - MARK</option>
-                <option value="15">15- MARK</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="">Order</label>
-              <input type="number" name="order" class="form-control">
-            </div>
-            <button type="submit" name="sub" class="btn btn-primary">ADD</button>
-          </form>
+                </option>
+            <?php } ?>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="part">Pattern Title</label>
+        <select name="part" id="part" class="form-control" required>
+            <option value="">Select any title</option>
+            <option value="A">PART A</option>
+            <option value="B">PART B</option>
+            <option value="C">PART C</option>
+            <option value="D">PART D</option>
+            <option value="E">PART E</option>
+            <option value="F">PART F</option>
+            <option value="G">PART G</option>
+            <option value="H">PART H</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="mark">Mark</label>
+        <select name="mark" id="mark" class="form-control" required>
+            <option value="">Select mark</option>
+            <option value="2"> 2 - MARK </option>
+            <option value="5"> 5 - MARK</option>
+            <option value="15">15- MARK</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="order">Order</label>
+        <input type="number" min="1" max="8" name="order" class="form-control" required>
+    </div>
+
+    <button type="submit" name="sub" class="btn btn-primary">ADD</button>
+</form>
+
         </div>
 
 

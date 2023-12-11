@@ -47,17 +47,18 @@ require_once("header.php");
         
         ?>
         <div class="col-md-6">
-          <form action="./code/update_programme_exe.php" method="post">
-            <div class="form-group">
-              <label for="">Programme Name :</label>
-              <input type="text" name="pname" class="form-control" value="<?php echo $data["p_name"] ?>">
-            </div>
-            <div class="form-group">
-              <input type="hidden" name="pid" value="<?php echo $pid ?>" class="form-control">
-            </div>
-            <button type="submit" class="btn btn-primary float-right" name="submit">UPDATE</button>
-          </form>
+    <form action="./code/update_programme_exe.php" method="post">
+        <div class="form-group">
+            <label for="pname">Programme Name :</label>
+            <input type="text" name="pname" class="form-control" value="<?php echo $data["p_name"] ?>" required>
         </div>
+        <div class="form-group">
+            <input type="hidden" name="pid" value="<?php echo $pid ?>" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary float-right" name="submit">UPDATE</button>
+    </form>
+</div>
+
 
 
 

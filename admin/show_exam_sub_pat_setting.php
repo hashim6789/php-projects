@@ -1,5 +1,6 @@
 <?php
 require_once("../admin/header.php");
+$exid = $_GET['exam_id'];
 ?>
 
 <!-- Content Wrapper. Contains page content -->
@@ -8,8 +9,10 @@ require_once("../admin/header.php");
   <section class="content-header">
     <div class="container-fluid">
       <div class="row mb-2">
-        <div class="col-sm-6">
+        <div class="col-sm-12">
           <h1>Available Examinaton Patterns</h1>
+          <a class="btn btn-sm btn-success float-right p-2" href='generate_exam_course.php?exid=<?php echo $exid ?>'>BACK</a>
+
         </div>
 
       </div>
@@ -30,6 +33,8 @@ require_once("../admin/header.php");
           <?php
 
 $cid = $_GET["cid"];
+$exam_id = $_GET['exam_id'];
+$pid = $_GET["pid"];
           require_once("../connectionclass.php");
            $query = "SELECT * FROM examcourse_patternsetting ep JOIN mark_pattern mp ON(ep.fk_mpat_id=mp.mpat_id)
                                                       JOIN course c ON (c.c_id=mp.fk_cid)
@@ -75,9 +80,9 @@ $cid = $_GET["cid"];
                   <?php echo $row["total_qns"]; ?>
                 </td>
                 <td><a onclick="return confirm('are you sure want to delete?')" class="btn btn-sm btn-danger"
-                    href="code/delete_exam_sub_pat_setting_exe.php?epid=<?php echo $row['exc_pat_id'] ?>">Delete</a>
-                  <a class="btn btn-sm btn-primary"
-                    href="edit_exam_sub_pat_setting.php?epid=<?php echo $row['exc_pat_id'] ?>&pid=<?php echo $row['p_id'] ?>&cid=<?php echo $row['c_id'] ?>">Edit</a>
+                    href="code/delete_exam_sub_pat_setting_exe.php?exam_id=<?php echo $exam_id ?>&epid=<?php echo $row['exc_pat_id'] ?>&pid=<?php echo $row['p_id'] ?>&cid=<?php echo $row['c_id'] ?>">Delete</a>
+                 <!-- <a class="btn btn-sm btn-primary"
+                    href="edit_exam_sub_pat_setting.php?epid=<?php echo $row['exc_pat_id'] ?>&pid=<?php echo $row['p_id'] ?>&cid=<?php echo $row['c_id'] ?>">Edit</a>-->
                 </td>
               </tr>
             <?php } ?>

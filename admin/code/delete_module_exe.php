@@ -1,10 +1,19 @@
 <?php
 require_once("../../connectionclass.php");
-$smid = $_GET['smid'];
-$query = "DELETE FROM course_module WHERE mod_id=$smid";
-
 $obj = new Connectionclass();
-$obj->Manipulation($query);
+$smid = $_GET['cmid'];
+$sql = "SELECT * FROM questions WHERE fk_modid = $smid";
+$qns = $obj->GetTable($sql);
 
-header("location: ../show_module.php");
+if(count($qns) == 0){
+    $query = "DELETE FROM course_module WHERE mod_id=$smid";
+    $obj->Manipulation($query);
+    header("location: ../show_module.php");
+}else{
+	echo $obj->alert("Could not delete module, questions already exist in there","../show_module.php");
+
+}
+
+
+
 ?>

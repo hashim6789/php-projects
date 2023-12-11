@@ -49,51 +49,48 @@ require_once("header.php");
                 <div class="col-md-6">
                     <form action="code/update_course_exe.php" method="post">
 
-                        <div class="form-group">
-                            <label for="pid">Programmes</label>
-                            <select class="form-control" id="pid" name="pid">
-                                <option value="<?php echo $data1["fk_pid"]; ?>">
-                                    <?php echo $data1["p_name"]; ?>
-                                </option>
-                                <?php foreach ($data2 as $row) { ?>
-                                    <option value="<?php echo $row["p_id"]; ?>">
-                                        <?php echo $row["p_name"]; ?>
-                                    </option>
-                                <?php } ?>
-                            </select>
-                        </div>
+    <div class="form-group">
+        <label for="pid">Programmes</label>
+        <select class="form-control" id="pid" name="pid" required>
+            <option value="<?php echo $data1["fk_pid"]; ?>">
+                <?php echo $data1["p_name"]; ?>
+            </option>
+            <?php foreach ($data2 as $row) { ?>
+                <option value="<?php echo $row["p_id"]; ?>">
+                    <?php echo $row["p_name"]; ?>
+                </option>
+            <?php } ?>
+        </select>
+    </div>
 
-                        <div class="form-group">
-                            <label for="cname">Enter Course Name:</label>
-                            <input type="text" class="form-control" id="cname" name="cname"
-                                value="<?php echo $data1["c_name"]; ?>">
-                        </div>
+    <div class="form-group">
+        <label for="cname">Enter Course Name:</label>
+        <input type="text" class="form-control" id="cname" name="cname" value="<?php echo $data1["c_name"]; ?>" required>
+    </div>
 
-                        <div class="form-group">
-                            <label for="ccode">Enter Course Code:</label>
-                            <input type="text" class="form-control" id="ccode" name="ccode"
-                                value="<?php echo $data1["c_code"]; ?>">
-                        </div>
+    <div class="form-group">
+        <label for="ccode">Enter Course Code:</label>
+        <input type="text" class="form-control" id="ccode" name="ccode" value="<?php echo $data1["c_code"]; ?>" required>
+    </div>
 
-                        <div class="form-group">
-                            <label for="semester">Select Semester:</label>
-                            <select class="form-control" id="semester" name="sem">
-                                <option value="1">Semester 1</option>
-                                <option value="2">Semester 2</option>
-                                <option value="3">Semester 3</option>
-                                <option value="4">Semester 4</option>
-                                <option value="5">Semester 5</option>
-                                <option value="6">Semester 6</option>
-                            </select>
-                        </div>
+    <div class="form-group">
+        <label for="semester">Select Semester:</label>
+        <select class="form-control" id="semester" name="sem" required>
+            <option value="1">Semester 1</option>
+            <option value="2">Semester 2</option>
+            <option value="3">Semester 3</option>
+            <option value="4">Semester 4</option>
+            <option value="5">Semester 5</option>
+            <option value="6">Semester 6</option>
+        </select>
+    </div>
 
+    <input type="hidden" name="cid" value="<?php echo $cid; ?>">
 
-                        <input type="hidden" name="cid" value="<?php echo $cid; ?>">
+    <button type="submit" class="btn btn-primary">UPDATE</button>
 
-                        <button type="submit" class="btn btn-primary">UPDATE</button>
+</form>
 
-                </div>
-                </form>
             </div>
 
             <!-- /.card-body -->

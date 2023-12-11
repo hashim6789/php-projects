@@ -53,29 +53,30 @@ require_once("header.php");
 
 
 
-        <div class="col-md-6">
-          <form action="code/update_staff_course_exe.php" method="post">
+<div class="col-md-6">
+  <form action="code/update_staff_course_exe.php" method="post">
 
-            <div class="form-group">
-              <label for="">Course:</label><br>
+    <div class="form-group">
+      <label for="">Course:</label><br>
 
-              <?php foreach ($data as $row) { ?>
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="cid" value="<?php echo $row["c_id"] ?>"
-                    id="<?php echo $row["c_id"] ?>">
-                  <label class="form-check-label" for="<?php echo $row["c_id"] ?>">
-                    <?php echo $row["c_name"]; ?>
-                  </label>
-                </div>
-              <?php } ?>
-
-            </div>
-
-
-            <input type="hidden" name="stcid" value="<?php echo $stcid ?>">
-            <button type="submit" name="sub" class="btn btn-primary">UPDATE</button>
-          </form>
+      <?php foreach ($data as $row) { ?>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="cid" value="<?php echo $row["c_id"] ?>"
+            id="<?php echo $row["c_id"] ?>" required>
+          <label class="form-check-label" for="<?php echo $row["c_id"] ?>">
+            <?php echo $row["c_name"]; ?>
+          </label>
         </div>
+      <?php } ?>
+
+    </div>
+
+
+    <input type="hidden" name="stcid" value="<?php echo $stcid ?>">
+    <button type="submit" name="sub" class="btn btn-primary">UPDATE</button>
+  </form>
+</div>
+
 
 
       </div>

@@ -1,5 +1,12 @@
 <?php
 require_once("../admin/header.php");
+require_once("../connectionclass.php");
+
+$obj = new Connectionclass();
+$username= $_SESSION['username'];
+$sql="select st_id from staff where st_email='$username'";
+  $staff_id= $obj->getSingleData($sql);
+ 
 ?>
 
 <!-- Content Wrapper. Contains page content -->
@@ -33,7 +40,7 @@ require_once("../admin/header.php");
         require_once("../connectionclass.php");
         $obj = new Connectionclass();
 
-        $query = "SELECT * FROM course";
+        $query = "SELECT * FROM course where c_id in(select fk_cid from staff_course where fk_stid=$staff_id)";
         $data = $obj->GetTable($query);
         //var_dump($data);
         
@@ -41,28 +48,29 @@ require_once("../admin/header.php");
         ?>
 
         <div class="col-md-6">
-          <form action="code/add_module_exe.php" method="post">
-            <div class="form-group">
-              <label for="cid">Subject</label>
-              <select class="form-control" name="cid" id="cid">
-                <option value="">Select any subject</option>
-                <?php foreach ($data as $row) { ?>
-                  <option value="<?php echo $row['c_id'] ?>">
+        <form action="code/add_module_exe.php" method="post">
+    <div class="form-group">
+        <label for="cid">Subject</label>
+        <select class="form-control" name="cid" id="cid" required>
+            <option value="">Select any subject</option>
+            <?php foreach ($data as $row) { ?>
+                <option value="<?php echo $row['c_id'] ?>">
                     <?php echo $row['c_name'] ?>
-                  </option>
-                <?php } ?>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="mname">Module Name</label>
-              <input type="text" class="form-control" name="mname" id="mname">
-            </div>
-            <div class="form-group">
-              <label for="mno">Module No</label>
-              <input type="number" class="form-control" name="mno" id="mno" min="1" max="5">
-            </div>
-            <button type="submit" name="sub" class="btn btn-primary">ADD</button>
-          </form>
+                </option>
+            <?php } ?>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="mname">Module Name</label>
+        <input type="text" class="form-control" name="mname" id="mname" required>
+    </div>
+    <div class="form-group">
+        <label for="mno">Module No</label>
+        <input type="number" class="form-control" name="mno" id="mno" min="1" max="5" required>
+    </div>
+    <button type="submit" name="sub" class="btn btn-primary">ADD</button>
+</form>
+
         </div>
 
 

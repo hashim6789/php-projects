@@ -1,12 +1,24 @@
 <?php
 require_once("../../connectionclass.php");
+$obj = new Connectionclass();
 $pname = $_POST["pname"];
 
-$query = "INSERT INTO programme (p_name) VALUES ('$pname')";
+$q = "SELECT COUNT(p_name)  FROM programme WHERE p_name = '$pname'";
+$count =$obj->GetSingleData($q);
+//echo $count;
 
-$obj = new Connectionclass();
+if($count == 0){
 
-$obj->Manipulation($query);
+    $query = "INSERT INTO programme (p_name) VALUES ('$pname')";
+    $obj->Manipulation($query);
+    header("location: ../show_programme.php");
+}else{
+    echo $obj->alert("programme already exist in there","../add_programme.php");
 
-header("location: ../show_programme.php");
+}
+
+
+
+
+
 ?>

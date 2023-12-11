@@ -31,7 +31,7 @@ require_once("header.php");
           <form action="./code/add_programme_exe.php" method="post">
             <div class="form-group">
               <label for="">Programme Name :</label>
-              <input type="text" name="pname" class="form-control">
+              <input type="text" name="pname" class="form-control" required>
             </div>
             <button type="submit" class="btn btn-primary float-right" name="submit">SAVE</button>
           </form>

@@ -23,6 +23,7 @@ require_once("header.php");
     <div class="card">
       <div class="card-header">
         <h3 class="card-title"> Staff Courses</h3>
+        <a class="btn btn-sm btn-primary float-right" href="add_staff_course.php">ADD</a>
 
 
       </div>

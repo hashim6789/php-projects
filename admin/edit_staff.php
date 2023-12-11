@@ -47,63 +47,75 @@ require_once("header.php");
         ?>
         <div class="container">
           <div class="row">
-            <div class="col-md-6">
-              <form action="./code/update_staff_exe.php" method="post">
-                <div class="form-group">
-                  <label for="pid">Programme:</label>
-                  <select class="form-control" name="pid" id="pid">
-                    <option value="<?php echo $data1["fk_pid"] ?>">
-                      <?php echo $data1["p_name"] ?>
-                    </option>
-                    <?php foreach ($data2 as $row) { ?>
-                      <option value="<?php echo $row["p_id"] ?>">
-                        <?php echo $row["p_name"]; ?>
-                      </option>
-                    <?php } ?>
-                  </select>
-                </div>
+          <div class="col-md-6">
+  <form action="./code/update_staff_exe.php" method="post">
+    <div class="form-group">
+      <label for="pid">Programme:</label>
+      <select class="form-control" name="pid" id="pid" required>
+        <option value="<?php echo $data1["fk_pid"] ?>">
+          <?php echo $data1["p_name"] ?>
+        </option>
+        <?php foreach ($data2 as $row) { ?>
+          <option value="<?php echo $row["p_id"] ?>">
+            <?php echo $row["p_name"]; ?>
+          </option>
+        <?php } ?>
+      </select>
+    </div>
 
-                <div class="form-group">
-                  <label for="stname">Enter staff name:</label>
-                  <input type="text" class="form-control" name="stname" id="stname"
-                    value="<?php echo $data1["st_name"] ?>">
-                </div>
+    <div class="form-group">
+      <label for="stname">Enter staff name:</label>
+      <input type="text" class="form-control" name="stname" id="stname" value="<?php echo $data1["st_name"] ?>" required>
+    </div>
 
-                <div class="form-group">
-                  <label for="stphone">Enter staff phone no:</label>
-                  <input type="text" class="form-control" name="stphone" id="stphone"
-                    value="<?php echo $data1["st_phone"] ?>">
-                </div>
+    <div class="form-group">
+      <label for="stphone">Enter staff phone no:</label>
+      <input type="text" class="form-control" name="stphone" id="stphone" value="<?php echo $data1["st_phone"] ?>"
+        required>
+    </div>
 
-                <div class="form-group">
-                  <label for="stmail">Enter e-mail id:</label>
-                  <input type="email" class="form-control" name="stmail" id="stmail"
-                    value="<?php echo $data1["st_email"] ?>">
-                </div>
+    <div class="form-group">
+      <label for="stmail">Enter e-mail id:</label>
+      <input type="email" class="form-control" readonly name="stmail" id="stmail"
+        value="<?php echo $data1["st_email"] ?>" required>
+    </div>
 
-                <div class="form-group">
-                  <div class="form-group">
-                    <div class="form-group">
-                      <label>Gender:</label>
-                      <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="stgender" id="male" value="Male">
-                        <label class="form-check-label" for="male">Male</label>
-                      </div>
-                      <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="stgender" id="female" value="Female">
-                        <label class="form-check-label" for="female">Female</label>
-                      </div>
-                      <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="stgender" id="others" value="Others">
-                        <label class="form-check-label" for="others">Others</label>
-                      </div>
-                    </div>
+    <?php
+      $genders = ['Male', 'Female', 'Others'];
+      ?>
 
-                    <input type="hidden" name="stid" value="<?php echo $stid ?>">
+    <div class="form-group">
+      <div class="form-group">
+        <div class="form-group">
+          <label>Gender:</label>
+          <?php
+            foreach ($genders as $g) {
+              $checked = "";
+              if ($g == $data1['gender']) {
+                $checked = 'checked';
+              } else {
+                $checked = '';
+              }
+              ?>
 
-                    <button type="submit" class="btn btn-primary">UPDATE</button>
-              </form>
-            </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" <?php echo $checked ?> type="radio" name="stgender" id="male"
+              value="<?php echo $g ?>" required>
+            <label class="form-check-label" for="male"><?php echo $g ?></label>
+          </div>
+
+          <?php
+            }
+            ?>
+
+        </div>
+
+        <input type="hidden" name="stid" value="<?php echo $stid ?>">
+
+        <button type="submit" class="btn btn-primary">UPDATE</button>
+  </form>
+</div>
+
           </div>
         </div>
 

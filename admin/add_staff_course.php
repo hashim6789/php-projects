@@ -44,36 +44,56 @@ require_once("header.php");
 
         ?>
         <div class="col-md-6">
-          <form action="code/add_staff_course_exe.php" method="post">
-            <div class="form-group">
-              <label for="stid">Select Staff:</label>
-              <select class="form-control" name="stid" id="stid">
-                <option value="">Select a staff</option>
-                <?php foreach ($data1 as $row) { ?>
-                  <option value="<?php echo $row["st_id"]; ?>">
+        <form action="code/add_staff_course_exe.php" method="post">
+    <div class="form-group">
+        <label for="stid">Select Staff:</label>
+        <select class="form-control" name="stid" id="stid" required>
+            <option value="">Select a staff</option>
+            <?php foreach ($data1 as $row) { ?>
+                <option value="<?php echo $row["st_id"]; ?>">
                     <?php echo $row["st_name"]; ?>
-                  </option>
-                <?php } ?>
-              </select>
-            </div>
+                </option>
+            <?php } ?>
+        </select>
+    </div>
 
-            <div class="form-group">
-              <label for="">Select Courses :</label><br>
+    <div class="form-group">
+        <label for="">Select Courses :</label><br>
 
-              <?php foreach ($data2 as $row) { ?>
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" name="cid[]" value="<?php echo $row["c_id"] ?>"
+        <?php foreach ($data2 as $row) { ?>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="cid[]" value="<?php echo $row["c_id"] ?>"
                     id="<?php echo $row["c_id"] ?>">
-                  <label class="form-check-label" for="<?php echo $row["c_id"] ?>">
+                <label class="form-check-label" for="<?php echo $row["c_id"] ?>">
                     <?php echo $row["c_name"]; ?>
-                  </label>
-                </div>
-              <?php } ?>
-
+                </label>
             </div>
+        <?php } ?>
 
-            <button type="submit" name="sub" class="btn btn-primary">ADD</button>
-          </form>
+    </div>
+
+    <button type="submit" name="sub" class="btn btn-primary" onclick="return validateForm()">ADD</button>
+</form>
+
+<script>
+    function validateForm() {
+        var staffSelection = document.getElementById("stid");
+        var checkboxes = document.querySelectorAll('input[name="cid[]"]:checked');
+
+        if (staffSelection.value === "") {
+            alert("Please select a staff.");
+            return false;
+        }
+
+        if (checkboxes.length === 0) {
+            alert("Please select at least one course.");
+            return false;
+        }
+
+        return true;
+    }
+</script>
+
         </div>
 
       </div>
