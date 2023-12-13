@@ -13,24 +13,12 @@ require_once("header.php");
     <div class="content-wrapper">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-7">
+          <div class="col-6">
             <div class="row">
-              <div class="col-6">
+              <div class="col-12">
                 <!-- First small box -->
-                <div class="small-box bg-info">
-                  <div class="inner">
-                    <p>EXAMS</p>
-                  </div>
-                  <div class="icon">
-                    <i class="ion ion-bag"></i>
-                  </div>
-                  <a href="show_exams.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-              </div>
-              <div class="col-6">
                 <div class="small-box bg-danger">
                   <div class="inner">
-                   
                     <p>MODULE</p>
                   </div>
                   <div class="icon">
@@ -41,11 +29,21 @@ require_once("header.php");
               </div>
             </div>
             <div class="row">
-              
+            <div class="col-12">
+                <div class="small-box bg-info">
+                  <div class="inner">
+                    <p>EXAMS</p>
+                  </div>
+                  <div class="icon">
+                    <i class="ion ion-bag"></i>
+                  </div>
+                  <a href="show_exams.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+              </div>
             
             </div>
           </div>
-          <div class="col-5">
+          <div class="col-6">
          
             <!-- Calendar -->
             <div class="card bg-gradient-success">
@@ -86,9 +84,9 @@ require_once("header.php");
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
+            </div>
           
           </div>
-        </div>
       </div>
     </div>
 

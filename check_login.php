@@ -16,7 +16,7 @@ if ($exe != null) {
 
 		header("location:admin/dashboard.php");
 	} elseif ($exe['usertype'] == 'STAFF') {
-		header("location:admin/show_exams.php");
+		header("location:admin/dashboard_staff.php");
 	}
 } else {
 	echo $obj->alert("invalid username or password","index1.html");

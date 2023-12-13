@@ -40,7 +40,7 @@ require_once("header.php");
         ?>
 
         <div class="col-md-6">
-        <form action="./code/add_staff_exe.php" method="post">
+        <form action="./code/add_staff_exe.php" method="post" onsubmit="validateForm()">
     <div class="form-group">
         <label for="pid">Programmes :</label>
         <select class="form-control" id="pid" name="pid" required>
@@ -81,7 +81,7 @@ require_once("header.php");
             </div>
             <div class="form-group">
                 <label for="stmail">Staff Email :</label>
-                <input type="email" class="form-control" id="stmail" name="stmail" required>
+                <input type="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"class="form-control" id="stmail" name="stmail" required>
             </div>
             <div class="form-group">
                 <label for="stmail">Staff Password</label>
@@ -106,6 +106,19 @@ require_once("header.php");
   <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+<script>
+        function validateForm() {
+            var emailInput = document.getElementById('email');
+            var emailPattern = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+            if (!emailPattern.test(emailInput.value)) {
+                alert('Please enter a valid email address.');
+                return false;
+            }
+
+            return true;
+        }
+    </script>
 
 <?php
 require_once("footer.php");

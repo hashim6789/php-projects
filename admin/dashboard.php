@@ -13,10 +13,38 @@ require_once("header.php");
     <div class="content-wrapper">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-7">
+          <div class="col-6">
             <div class="row">
-              <div class="col-6">
-                <!-- First small box -->
+              <div class="col-12">
+                <!-- First box -->
+                <div class="small-box bg-success">
+                  <div class="inner">
+                    <p>PROGRAMME</p>
+                  </div>
+                  <div class="icon">
+                    <i class="ion ion-stats-bars"></i>
+                  </div>
+                  <a href="show_programme.php" class="small-box-footer">Show <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <!-- Second box -->
+                <div class="small-box bg-warning">
+                  <div class="inner">
+                    <p>COURSE</p>
+                  </div>
+                  <div class="icon">
+                    <i class="ion ion-person-add"></i>
+                  </div>
+                  <a href="show_course.php" class="small-box-footer">Show <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <!-- Third box -->
                 <div class="small-box bg-info">
                   <div class="inner">
                     <p>STAFF</p>
@@ -24,55 +52,31 @@ require_once("header.php");
                   <div class="icon">
                     <i class="ion ion-bag"></i>
                   </div>
-                  <a href="show_staff.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-              </div>
-              <div class="col-6">
-                <div class="small-box bg-success">
-                  <div class="inner">
-                   
-                    <p>PROGRAMME</p>
-                  </div>
-                  <div class="icon">
-                    <i class="ion ion-stats-bars"></i>
-                  </div>
-                  <a href="show_programme.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                  <a href="show_staff.php" class="small-box-footer">Show <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
               </div>
             </div>
             <div class="row">
-              <div class="col-6">
-                <div class="small-box bg-warning">
-                  <div class="inner">
-                   
-                    <p>COURSE</p>
-                  </div>
-                  <div class="icon">
-                    <i class="ion ion-person-add"></i>
-                  </div>
-                  <a href="show_course.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-              </div>
-              <div class="col-6">
+              <div class="col-12">
+                <!-- Third box -->
                 <div class="small-box bg-danger">
                   <div class="inner">
-                    
                     <p>EXAMINATIONS</p>
                   </div>
                   <div class="icon">
                     <i class="ion ion-pie-graph"></i>
                   </div>
-                  <a href="show_examination.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                  <a href="show_examination.php" class="small-box-footer">Show <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-5">
-         
+
+
+          <div class="col-6">
             <!-- Calendar -->
             <div class="card bg-gradient-success">
               <div class="card-header border-0">
-
                 <h3 class="card-title">
                   <i class="far fa-calendar-alt"></i>
                   Calendar
@@ -108,7 +112,6 @@ require_once("header.php");
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
-          
           </div>
         </div>
       </div>

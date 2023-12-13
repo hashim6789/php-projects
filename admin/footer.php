@@ -27,5 +27,11 @@
 <script src="assets/dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="assets/dist/js/pages/dashboard.js"></script>
+
+<!-- calendar -->
+<!-- <script src="../calendar-04/js/jquery.min.js"></script>
+  <script src="../calendar-04/js/popper.js"></script>
+  <script src="../calendar-04/js/bootstrap.min.js"></script>
+  <script src="../calendar-04/js/main.js"></script> -->
 </body>
 </html>
