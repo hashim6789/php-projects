@@ -23,6 +23,7 @@ require_once("header.php");
     <div class="card">
       <div class="card-header">
         <h3 class="card-title">Add </h3>
+        <a class="btn btn-sm btn-success float-right" href='show_staff.php'>BACK</a>
 
 
       </div>
@@ -81,7 +82,7 @@ require_once("header.php");
             </div>
             <div class="form-group">
                 <label for="stmail">Staff Email :</label>
-                <input type="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"class="form-control" id="stmail" name="stmail" required>
+                <input type="email" pattern="/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/"class="form-control" id="stmail" name="stmail" required>
             </div>
             <div class="form-group">
                 <label for="stmail">Staff Password</label>

@@ -30,6 +30,7 @@ $sql="select st_id from staff where st_email='$username'";
     <div class="card">
       <div class="card-header">
         <h3 class="card-title">Add</h3>
+        <a class="btn btn-sm btn-success float-right p-2" href='show_mark_pattern.php'>BACK</a>
 
 
       </div>

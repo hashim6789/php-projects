@@ -23,6 +23,7 @@ require_once("../admin/header.php");
     <div class="card">
       <div class="card-header">
         <h3 class="card-title">Edit</h3>
+        <a class="btn btn-sm btn-success float-right" href='show_module.php'>BACK</a>
 
 
       </div>
@@ -48,7 +49,7 @@ require_once("../admin/header.php");
 <div class="col-md-6">
     <form action="code/update_module_exe.php" method="post">
         <div class="form-group">
-            <label for="cid">Subject</label>
+            <label for="cid">Course</label>
             <select class="form-control" name="cid" id="cid" required>
                 <option value="<?php echo $data1['c_id'] ?>">
                     <?php echo $data1['c_name'] ?>

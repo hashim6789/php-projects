@@ -30,6 +30,7 @@ $sql="select st_id from staff where st_email='$username'";
     <div class="card">
       <div class="card-header">
         <h3 class="card-title"></h3>Add
+        <a class="btn btn-sm btn-success float-right" href='show_module.php'>BACK</a>
 
 
       </div>
@@ -50,9 +51,9 @@ $sql="select st_id from staff where st_email='$username'";
         <div class="col-md-6">
         <form action="code/add_module_exe.php" method="post">
     <div class="form-group">
-        <label for="cid">Subject</label>
+        <label for="cid">Course</label>
         <select class="form-control" name="cid" id="cid" required>
-            <option value="">Select any subject</option>
+            <option value="">Select any course</option>
             <?php foreach ($data as $row) { ?>
                 <option value="<?php echo $row['c_id'] ?>">
                     <?php echo $row['c_name'] ?>

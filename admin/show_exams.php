@@ -50,12 +50,12 @@ require_once("header.php");
 
           </tr>
           <?php
-          foreach ($data as $row) {
+          foreach ($data as $index=>$row) {
             ?>
 
             <tr>
               <td>
-                <?php echo $row["ex_id"]; ?>
+                <?php echo $index+1; ?>
               </td>
               <td>
                 <?php echo $row["ex_title"]; ?>
@@ -71,7 +71,7 @@ require_once("header.php");
               </td>
               <td>
                 <a href="generate_exam_course.php?exid=<?php echo $row['ex_id'] ?>"
-                  class="btn btn-sm btn-success">SUBJECT</a>
+                  class="btn btn-sm btn-success">COURSE</a>
               </td>
             </tr>
           <?php } ?>

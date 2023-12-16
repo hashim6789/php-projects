@@ -52,12 +52,12 @@ require_once("header.php");
             <th>ACTION</th>
           </tr>
           <?php
-          foreach ($data as $row) {
+          foreach ($data as $index=>$row) {
             ?>
 
             <tr>
               <td>
-                <?php echo $row["stc_id"]; ?>
+                <?php echo $index+1; ?>
               </td>
               <td>
                 <?php echo $row["st_name"]; ?>

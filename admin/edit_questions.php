@@ -72,7 +72,7 @@ require_once("../admin/header.php");
 
               $query = "SELECT * FROM questions q JOIN mark_pattern mp ON (q.fk_patid = mp.mpat_id)
                                                   WHERE fk_modid=$cmid";
-              echo $query;
+              //echo $query;
               $data = $obj->GetTable($query);
 
 
@@ -87,12 +87,12 @@ require_once("../admin/header.php");
                   <th>ACTION</th>
                 </tr>
                 <?php
-                foreach ($data as $row) {
+                foreach ($data as $index=>$row) {
                   ?>
 
                   <tr>
                     <td>
-                      <?php echo $row["qn_id"]; ?>
+                      <?php echo $index+1; ?>
                     </td>
                     <td>
                       <?php echo $row["qn"]; ?>
@@ -130,35 +130,36 @@ require_once("../admin/header.php");
 
 
 
-            <div>
-  <form action="code/update_questions_exe.php" method="post">
-    <div class="form-group">
-      <label for="">Question Pattern</label>
-      <select class="form-control" name="patid" id="" required>
-        <option value="">
-          <?php echo "PART " . $data7['part'] . " " . $data7['mark'] . "- MARKS" . "(" . $data7['m_order'] . ")" ?>
-        </option>
-        <?php foreach ($data3 as $row) { ?>
-          <option value="<?php echo $row["mpat_id"] ?>" required>
-            <?php echo "PART " . $row['part'] . " " . $row['mark'] . "- MARKS" . "(" . $row['m_order'] . ")" ?>
-          </option>
-        <?php } ?>
-      </select>
-    </div>
+              <div>
+                <form action="code/update_questions_exe.php" method="post">
+                  <div class="form-group">
+                    <label for="">Question Pattern</label>
+                    <select class="form-control" name="patid" id="" required>
+                      <option value="">
+                        <?php echo "PART " . $data7['part'] . " " . $data7['mark'] . "- MARKS" . "(" . $data7['m_order'] . ")" ?>
+                      </option>
+                      <?php foreach ($data3 as $row) { ?>
+                        <option value="<?php echo $row["mpat_id"] ?>" required>
+                          <?php echo "PART " . $row['part'] . " " . $row['mark'] . "- MARKS" . "(" . $row['m_order'] . ")" ?>
+                        </option>
+                      <?php } ?>
+                    </select>
+                  </div>
 
-    <div class="form-group">
-      <label for="qn">Questions</label>
-      <input type="text" class="form-control" name="qn" id="qn" value="<?php echo $data7['qn'] ?>" required>
-    </div>
+                  <div class="form-group">
+                    <label for="qn">Questions</label>
+                    <input type="text" class="form-control" name="qn" id="qn" value="<?php echo $data7['qn'] ?>"
+                      required>
+                  </div>
 
-    <input type="hidden" name="cid" value="<?php echo $cid ?>">
-    <input type="hidden" name="cmid" value="<?php echo $cmid ?>">
-    <input type="hidden" name="qnid" value="<?php echo $qnid ?>">
-    <input type="hidden" name="patid" value="<?php echo $data7['mpat_id'] ?>">
+                  <input type="hidden" name="cid" value="<?php echo $cid ?>">
+                  <input type="hidden" name="cmid" value="<?php echo $cmid ?>">
+                  <input type="hidden" name="qnid" value="<?php echo $qnid ?>">
+                  <input type="hidden" name="patid" value="<?php echo $data7['mpat_id'] ?>">
 
-    <button type="submit" class="btn btn-primary" name="sub">UPDATE</button>
-  </form>
-</div>
+                  <button type="submit" class="btn btn-primary" name="sub">UPDATE</button>
+                </form>
+              </div>
 
 
 

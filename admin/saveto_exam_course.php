@@ -46,6 +46,8 @@ require_once("header.php");
               <div class="row"> <label for="">Exam:
                   <?php echo $data["ex_title"] ?>
                 </label></div>
+                <a class="btn btn-sm btn-success float-right" href='show_examination.php'>BACK</a>
+
               <div class="row"> <label for="">Semester:
                   <?php echo $data["semester"] ?>
                 </label></div>

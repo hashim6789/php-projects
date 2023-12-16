@@ -24,7 +24,7 @@ require_once("header.php");
                   <div class="icon">
                     <i class="ion ion-stats-bars"></i>
                   </div>
-                  <a href="show_module.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                  <a href="show_module.php" class="small-box-footer">Show <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
               </div>
             </div>
@@ -37,10 +37,24 @@ require_once("header.php");
                   <div class="icon">
                     <i class="ion ion-bag"></i>
                   </div>
-                  <a href="show_exams.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                  <a href="show_exams.php" class="small-box-footer">Show <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
               </div>
             
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <!-- Third box -->
+                <div class="small-box bg-success">
+                  <div class="inner">
+                    <p>MARK PATTERNS</p>
+                  </div>
+                  <div class="icon">
+                    <i class="ion ion-stats-bars"></i>
+                  </div>
+                  <a href="show_mark_pattern.php" class="small-box-footer">Show <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+              </div>
             </div>
           </div>
           <div class="col-6">

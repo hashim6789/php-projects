@@ -1,6 +1,6 @@
 <?php
     session_start();
     session_destroy();
-    header("location: index1.html");
+    header("location: home/index.html");
 
 ?>

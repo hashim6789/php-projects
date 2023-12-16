@@ -29,6 +29,7 @@ $obj = new Connectionclass();
         //echo $query;
         $data = $obj->GetSingleRow($query);
         $pid = $data["fk_pid"];
+        $exid = $data["fk_exid"];
         $query = "SELECT p_name FROM programme WHERE p_id = $pid ";
         $pname = $obj->GetSingleData($query);
 
@@ -53,6 +54,8 @@ $obj = new Connectionclass();
           <div class="container">
             <center>
             <h1> <?php echo $data["ex_title"] ?></h1>
+            <a class="btn btn-sm btn-success float-right" style=" background-color: green; color : aliceblue; float : right; size: 10px"href='generate_exam_course.php?exid=<?php echo $exid ?>'>BACK</a>
+
             <h2> <?php echo   $pname ?></h2>
             <h2> <?php echo   $cname ?></h2>
             <!-- <h3> <?php echo "Semester : ".$data["semester"] ?></h3> -->

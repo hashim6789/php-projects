@@ -58,12 +58,12 @@ $sql="select st_id from staff where st_email='$username'";
             <th>ACTION</th>
           </tr>
           <?php
-          foreach ($data as $row) {
+          foreach ($data as $index=>$row) {
             ?>
 
             <tr>
               <td>
-                <?php echo $row["mod_id"]; ?>
+                <?php echo $index+1; ?>
               </td>
               <td>
                 <?php echo $row["mod_name"]; ?>

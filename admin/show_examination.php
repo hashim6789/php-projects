@@ -79,7 +79,7 @@ require_once("header.php");
                   href="code/delete_examination_exe.php?exid=<?php echo $row['ex_id'] ?>">Delete</a>
                 <a class="btn btn-sm btn-primary" href="edit_examination.php?exid=<?php echo $row['ex_id'] ?>">Edit</a>
                 <a href="saveto_exam_course.php?exid=<?php echo $row['ex_id'] ?>"
-                  class="btn btn-sm btn-success">SUBJECT</a>
+                  class="btn btn-sm btn-success">COURSE</a>
               </td>
             </tr>
           <?php } ?>

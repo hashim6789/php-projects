@@ -52,6 +52,8 @@ $sql="select st_id from staff where st_email='$username'";
               <div class="row"> <label for="">Exam:
                   <?php echo $data["ex_title"] ?>
                 </label></div>
+                <a class="btn btn-sm btn-success float-right" href='show_exams.php'>BACK</a>
+
               <div class="row"> <label for="">Semester:
                   <?php echo $data["semester"] ?>
                 </label></div>
@@ -65,8 +67,8 @@ $sql="select st_id from staff where st_email='$username'";
               <table class="table table-bordered">
                 <tr>
                   <th> ID </th>
-                  <th>SUBJECT NAME </th>
-                  <th>SUBJECT CODE </th>
+                  <th>COURSE NAME </th>
+                  <th>COURSE CODE </th>
                   <th>STATUS</th>
                   <th>ACTION</th>
 
@@ -116,7 +118,7 @@ if($row["exc_status"]=="GENERATED"){
 ?>
                     
                   <a href="show_exam_sub_pat_setting.php?exam_id=<?php echo $exid ?>&pid=<?php echo $pid ?>&cid=<?php echo $cid ?>"
-                  class="btn btn-sm btn-success">MARK PATTERNS</a>
+                  class="btn btn-sm btn-success">EXAM PATTERNS</a>
                   
               </td>
                   </tr>
